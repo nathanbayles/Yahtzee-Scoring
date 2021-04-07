@@ -10,49 +10,18 @@ function score(fiveDiceRoll, scoringRule) {
   }
 }
 
-// [3,3,3,1,1] => 11
-// [1,3,3,3,1] => 11
-// [1,3,1,3,3] => 11
-// [2,5,3,5,5] => 20
-// [2,5,5,5,5] => 22
-// [3,3,4,1,1] => 0
-function scoreThreeOfAKind(fiveDiceRoll)
-{
-  const counts = {};
-  fiveDiceRoll.forEach((roll) => {
-    if (roll in counts) {
-      let currentCount = counts[roll];
-      currentCount += 1;
-      counts[roll] = currentCount;
-    } else {
-      counts[roll] = 1;
-    }
-  })
-
-  let sum = 0;
-  for (const [key, value] of Object.entries(counts)) {
-    // {2: 1, 5: 4} = >
-    // {3: 2, 4: 1, 1: 2} => 
-    let hasThreeOfKind = false;
-    if (value >= 3) {
-      hasThreeOfKind = true;
-      sum += key * value;
-    } else {
-      sum += key;
-    }
-  }
-
-  return (hasThreeOfKind) ? sum : 0;
-}
-
-
+// return the sum of all dice in fiveDiceRoll[]
+// [1,1,1,1,1] = 5
 function scoreChance(fiveDiceRoll)
 {
-  let chanceScore = 0;
-  for(var i = 0 ; i < fiveDiceRoll.length ; i++)
-  {
-    
-  }
-  return chanceScore;
 }
+
+// if the fiveDiceRoll[] contains three (or more) of a kind, return sum of all dice in fiveDiceRoll[]
+// else return 0
+// [1,2,3,2,2] = 10
+// [1,2,3,4,5] = 0
+function scoreThreeOfAKind(fiveDiceRoll)
+{
+}
+
 module.exports = score;
